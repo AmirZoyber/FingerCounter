@@ -6,12 +6,15 @@
 import cv2
 import mediapipe as mp
 
+# select which webcma to use (0 if you have just one webcam)
 cap = cv2.VideoCapture(0)
 
+# prepare detecting functions
 mp_hands = mp.solutions.hands
 hands = mp_hands.Hands()
 mp_draw = mp.solutions.drawing_utils
 
+# define finger coord
 finger_Coord = [(8, 6), (12, 10), (16, 14), (20, 18)]
 thumb_Coord = (4,2)
 
@@ -19,6 +22,7 @@ while (True):
     i,image = cap.read()
     RGB_image = cv2.cvtColor(image,cv2.COLOR_BGR2RGB)
     result = hands.process(RGB_image)
+    
     if (result.multi_hand_landmarks):
         handList=[]
         for handLms in result.multi_hand_landmarks:
@@ -37,5 +41,6 @@ while (True):
             upcount+=1
         cv2.putText(image,str(upcount),(150,150),cv2.FONT_HERSHEY_PLAIN,12,(0,255,0),12)
     cv2.imshow("FINGER COUNTER",image)
+    # it works, until you press 'q' key on keybord
     if cv2.waitKey(1) & 0xFF == ord('q'):break
 cv2.destroyAllWindows()
