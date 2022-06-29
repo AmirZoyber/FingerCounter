@@ -1,4 +1,4 @@
-# FingerCounter
+## FingerCounter
 
 Count Your Fingers With Python3 and Using Webcam.
 
@@ -11,11 +11,11 @@ Count Your Fingers With Python3 and Using Webcam.
 Install CV2(openCV) :
 
 ```bash
-pip install opencv-python
+$ pip install opencv-python
 ```
 
 Install mediapipe :
 
 ```bash
-pip install mediapipe
+$ pip install mediapipe
 ```
